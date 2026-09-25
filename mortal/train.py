@@ -317,13 +317,17 @@ def train():
                     stat = test_player.test_play(test_games // 4, mortal, dqn, device)
                     mortal.train()
                     dqn.train()
-
                     avg_pt = stat.avg_pt([90, 45, 0, -135]) # for display only, never used in training
                     better = avg_pt >= best_perf['avg_pt'] and stat.avg_rank <= best_perf['avg_rank']
                     if better:
                         past_best = best_perf.copy()
                         best_perf['avg_pt'] = avg_pt
                         best_perf['avg_rank'] = stat.avg_rank
+
+                    print("TEST PLAY FINISHED")
+                    print("avg_rank =", stat.avg_rank)
+
+                    print("WRITING TEST PLAY TO TENSORBOARD")
 
                     logging.info(f'avg rank: {stat.avg_rank:.6}')
                     logging.info(f'avg pt: {avg_pt:.6}')

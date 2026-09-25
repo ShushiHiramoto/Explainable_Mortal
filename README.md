@@ -43,3 +43,13 @@ $ ./scripts/run_train.sh [--skip-build-libriichi] [--no-rename-tensorboard]
 $ # --train_new_rg_models will rename the directory of current regression models, else the process will keep using the same directory.
 $ ./scripts/simple_run.sh [--skip-build-libriichi] mortal_analyzer.py [--train_new_rg_models]
 ```
+
+tensorboardの確認
+docker run --rm -it `
+  -v "${PWD}:/workspace/mortal" `
+  -w /workspace/mortal `
+  -p 6006:6006 `
+  --entrypoint tensorboard `
+  explainable-mortal:latest `
+  --logdir /workspace/mortal/built/tensorboard `
+  --bind_all

@@ -38,15 +38,18 @@ else
 fi
 
 # Build GPU flags using helper script
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-GPU_FLAGS=$("$SCRIPT_DIR/podman_gpu_helper.sh")
+#SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+#GPU_FLAGS=$("$SCRIPT_DIR/podman_gpu_helper.sh")
+GPU_FLAGS=""
 
 # start the training process using podman with GPU support
-podman run --rm \
+docker run --rm \
    $GPU_FLAGS \
-   -v .:/workspace/mortal \
-   -w /workspace/mortal \
+   -v .://workspace/mortal \
+   -w //workspace/mortal \
    --network=host \
    --entrypoint python \
-   localhost/explainable-mortal \
+   explainable-mortal \
    train.py
+#localhost/explainable-mortal \
+
