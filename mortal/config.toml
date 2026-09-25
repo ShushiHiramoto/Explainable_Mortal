@@ -9,7 +9,7 @@ state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mo
 best_state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/best.pth'
 tensorboard_dir = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/tensorboard'
 
-device = 'cude:0'
+device = 'cuda:0'
 enable_cudnn_benchmark = false
 enable_amp = false
 enable_compile = false
@@ -79,12 +79,12 @@ max_steps = 0
 [baseline.train]
 
 
-device = 'cude:0'
+device = 'cuda:0'
 enable_compile = false
 state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal.pth'
 
 [baseline.test]
-device = 'cude:0'
+device = 'cuda:0'
 enable_compile = false
 state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/best.pth'
 
@@ -111,7 +111,7 @@ iters = 1
 log_dir = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/1v3'
 
 [1v3.challenger]
-device = 'cude:0'
+device = 'cuda:0'
 name = 'mortal'
 state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal.pth'
 stochastic_latent = false
@@ -120,7 +120,7 @@ enable_amp = true
 enable_rule_based_agari_guard = true
 
 [1v3.champion]
-device = 'cude:0'
+device = 'cuda:0'
 name = 'mortal2'
 state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/test7_mortal.pth'
 stochastic_latent = false
@@ -141,7 +141,7 @@ hidden_size = 64
 num_layers = 2
 
 [grp.control]
-device = 'cude:0'
+device = 'cuda:0'
 enable_cudnn_benchmark = false
 tensorboard_dir = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/tensorboard/grp_v2/log'
 
