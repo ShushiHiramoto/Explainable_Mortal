@@ -151,21 +151,11 @@ val_steps = 400
 
 [grp.dataset]
 train_globs = [
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/01/**/*.mjson.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/02/**/*.mjson.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/03/**/*.mjson.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/04/**/*.mjson.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/05/**/*.mjson.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/07/**/*.mjson.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/08/**/*.mjson.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/09/**/*.mjson.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/10/**/*.mjson.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/11/**/*.mjson.gz',
+    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/**/*.mjson.gz',
     # ...
 ]
 val_globs = [
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/06/**/*.json.gz',
-    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/2024/12/**/*.json.gz',
+    '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/**/*.mjson.gz',
     # ...
 ]
 file_index = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/grp_file_index.pth'
