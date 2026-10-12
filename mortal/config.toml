@@ -6,7 +6,7 @@ version = 4
 online = false
 
 state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal.pth'
-best_state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/best.pth'
+best_state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal_grp_reward_best.pth.pth'
 tensorboard_dir = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/tensorboard'
 
 device = 'cuda:0'
@@ -32,7 +32,7 @@ top_p = 1.0
 repeats = 1
 
 [test_play]
-games = 300
+games = 3000
 log_dir = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/logs/test_play'
 
 [dataset]
@@ -81,12 +81,12 @@ max_steps = 0
 
 device = 'cuda:0'
 enable_compile = false
-state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal.pth'
+state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal_grp_reward.pth.pth'
 
 [baseline.test]
 device = 'cuda:0'
 enable_compile = false
-state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/best.pth'
+state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal_grp_reward_best.pth.pth'
 
 [online]
 history_window = 50
@@ -113,7 +113,7 @@ log_dir = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/1v3'
 [1v3.challenger]
 device = 'cuda:0'
 name = 'mortal'
-state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal.pth'
+state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal_grp_reward.pth.pth'
 stochastic_latent = false
 enable_compile = false
 enable_amp = true
@@ -122,7 +122,7 @@ enable_rule_based_agari_guard = true
 [1v3.champion]
 device = 'cuda:0'
 name = 'mortal2'
-state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/test7_mortal.pth'
+state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal.pth'
 stochastic_latent = false
 enable_compile = false
 enable_amp = true
