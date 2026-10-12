@@ -5,7 +5,7 @@
 version = 4
 online = false
 
-state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal.pth'
+state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal_grp_reward.pth'
 best_state_file = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/models/mortal_grp_reward_best.pth.pth'
 tensorboard_dir = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/tensorboard'
 
@@ -33,7 +33,7 @@ repeats = 1
 
 [test_play]
 games = 3000
-log_dir = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/logs/test_play'
+log_dir = '/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/logs/test_play_grp_reward'
 
 [dataset]
 globs = ['/home/matsu-lab/hiramoto/Explainable_Mortal/mortal/built/dataset/**/*.mjson.gz']
