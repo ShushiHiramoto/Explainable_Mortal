@@ -368,36 +368,61 @@ class MortalAnalyzer:
         training_steps = []
         models_data = []
         
-        for model_name in sorted(self.scores.keys()):
-            try:
-                # Extract step number from filename like "test12345_mortal.pth"
-                step = int(model_name.replace('test', '').replace('_mortal.pth', ''))
-                training_steps.append(step)
-                models_data.append(model_name)
-            except ValueError:
-                continue
+        #for model_name in sorted(self.scores.keys()):
+        #    try:
+        #        # Extract step number from filename like "test12345_mortal.pth"
+        #        step = int(model_name.replace('test', '').replace('_mortal.pth', ''))
+        #        training_steps.append(step)
+        #        models_data.append(model_name)
+        #    except ValueError:
+        #        continue
+        #
+        #if not training_steps:
+        #    print("No valid model checkpoints found.")
+        #    return None
         
-        if not training_steps:
-            print("No valid model checkpoints found.")
+        # Compare models directly; model names need not encode training steps.
+        models_data = sorted(self.scores.keys())
+
+        if not models_data:
+            print("No model scores available.")
             return None
-            
+
         if concept_name not in self.scores[models_data[0]]:
             print(f"Concept '{concept_name}' not found. Available: {list(self.scores[models_data[0]].keys())}")
             return None
         
         # Get block IDs from first model
-        block_ids = sorted(self.scores[models_data[0]][concept_name].keys())
+        #block_ids = sorted(self.scores[models_data[0]][concept_name].keys())
+
+        block_ids = sorted(
+            self.scores[models_data[0]][concept_name].keys(),
+            key=int,
+        )
         
         # Create meshgrid for 3D plot
-        X, Y = np.meshgrid(training_steps, block_ids)
-        Z = np.zeros_like(X, dtype=float)
-        
+        #X, Y = np.meshgrid(training_steps, block_ids)
+        #Z = np.zeros_like(X, dtype=float)
+        #
         # Fill Z with scores
+        #for i, block_id in enumerate(block_ids):
+        #    for j, model_name in enumerate(models_data):
+        #        score = self.scores[model_name][concept_name].get(block_id, np.nan)
+        #        Z[i, j] = score if not np.isnan(score) else 0.0
+        
+        # Use model positions on the X axis and block IDs on the Y axis.
+        model_positions = np.arange(len(models_data))
+        block_numbers = [int(block_id) for block_id in block_ids]
+        X, Y = np.meshgrid(model_positions, block_numbers)
+        Z = np.zeros_like(X, dtype=float)
+
         for i, block_id in enumerate(block_ids):
             for j, model_name in enumerate(models_data):
-                score = self.scores[model_name][concept_name].get(block_id, np.nan)
-                Z[i, j] = score if not np.isnan(score) else 0.0
-        
+                score = self.scores[model_name][concept_name].get(
+                    block_id, np.nan
+                )
+                Z[i, j] = score
+
         # Create 3D plot
         fig = plt.figure(figsize=(10, 8))
         ax = fig.add_subplot(111, projection='3d')
@@ -408,7 +433,9 @@ class MortalAnalyzer:
                                vmin=0, vmax=1)
         
         # Customize plot
-        ax.set_xlabel('Training steps', fontsize=12, labelpad=10)
+        ax.set_xlabel('Model', fontsize=12, labelpad=10)
+        ax.set_xticks(model_positions)
+        ax.set_xticklabels(models_data, rotation=15, ha='right')
         ax.set_ylabel('Block', fontsize=12, labelpad=10)
         ax.set_zlabel('Test accuracy', fontsize=12, labelpad=10)
         ax.set_title(f"{concept_name}", fontsize=14, pad=20)
@@ -417,7 +444,7 @@ class MortalAnalyzer:
         ax.set_zlim(0, 1)
         
         # Reverse x-axis and y-axis to show training steps in descending order
-        ax.invert_xaxis()
+        #ax.invert_xaxis()
         ax.invert_yaxis()
 
         # Add colorbar with fixed range
