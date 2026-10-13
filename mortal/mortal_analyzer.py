@@ -605,7 +605,7 @@ if __name__ == '__main__':
     #analyzer = MortalAnalyzer()
     #analyzer = MortalAnalyzer(model_paths = glob("/workspace/mortal/built/models/mortal.pth"))
     #analyzer = MortalAnalyzer(model_paths = glob("/workspace/mortal/built/models_for_concepts/test*_mortal.pth"))
-    analyzer = MortalAnalyzer(model_paths = ["/workspace/mortal/built/models/mortal.pth",
-                                             "/workspace/mortal/built/models/best.pth"
+    analyzer = MortalAnalyzer(model_paths = ["./built/models/mortal.pth",
+                                             "./built/models/mortal_grp_reward.pth"
                                             ])
     analyzer.run(load_regression_models = not args.train_new_rg_models, activation_interval = 5)
