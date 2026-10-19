@@ -11,6 +11,7 @@ __pycache__
 *.mjson
 *.npz
 *.html
+*.toml
 /mortal/built/tensorboard*/
 /mortal/built/concept_analysis/
 /mortal/output_RegressionAnalyzer.txt
