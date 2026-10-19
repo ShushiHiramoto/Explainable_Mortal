@@ -10,10 +10,16 @@ __pycache__
 *.mjson.gz
 *.mjson
 *.npz
+*.html
 /mortal/built/tensorboard*/
 /mortal/built/concept_analysis/
 /mortal/output_RegressionAnalyzer.txt
 view-logs/generated_htmls/
+
+# Generated datasets and logs
+/mortal/built/dataset/
+/mortal/built/logs/
+mortal_grp_reward_train.log
 
 .ipynb_checkpoints
 *.ipynb
